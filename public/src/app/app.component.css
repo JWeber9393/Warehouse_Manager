@@ -1,0 +1,20 @@
+*{
+    background-color: white;
+    font-family: 'Black Ops One', cursive;
+}
+body{
+    background-color: transparent;
+   
+}
+.container{
+    margin-top: 100px;
+    text-align: center;
+    padding-bottom: 15px;
+    background-image: linear-gradient(to bottom right, orangered, rgb(255, 108, 55));
+}
+h1{
+    background-color: transparent;
+}
+h1:hover{
+    color: white;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="row header">
+        <h2 class="col">Stock Inventory&nbsp;<button class="btn btn-outline-info btnAdd" [routerLink]="['new']">+ Add Product</button></h2>
+    </div>
+
+    <table class="table table-dark">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </thead>
+        <tr *ngFor="let product of products">
+            <td>{{product._id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.price | currency}}</td>
+            <td>
+                <button class="btn btn-outline-info" [routerLink]="['/products/edit/', product._id]">Edit</button>
+                <button class="btn btn-outline-info" [routerLink]="['/products/', product._id]">Details</button>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

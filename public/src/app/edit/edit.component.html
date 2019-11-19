@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <form [formGroup]='editProduct' (ngSubmit)="onEdit(editProduct.value)">
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3>Edit {{editProduct.name}}</h3>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="form-group"
+                    [ngClass]="{'alert alert-danger': editProduct.get('name').errors && editProduct.get('name').touched || editProduct.get('name').dirty}">
+                    <label class="col-sm-2 control-label" for="name">Name</label>
+                    <div class="col-sm-8">
+                        <input id="name" type="text" formControlName="name" class="form-control">
+                        <span class="help-block"
+                            *ngIf="editProduct.get('name').errors && editProduct.get('name').touched || editProduct.get('name').dirty">
+                            <span *ngIf="editProduct.get('name').errors?.required">
+                                Please enter a name!
+                            </span>
+                            <span *ngIf="editProduct.get('name').errors?.minlength">
+                                Name must be at least 3 characters!
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group"
+                    [ngClass]="{'alert alert-danger': editProduct.get('quantity').errors && editProduct.get('quantity').touched || editProduct.get('quantity').dirty}">
+                    <label class="col-sm-2 control-label" for="quantity">Quantity</label>
+                    <div class="col-sm-8">
+                        <input id="quantity" type="text" formControlName="quantity" class="form-control">
+                        <span class="help-block"
+                            *ngIf="editProduct.get('quantity').errors && editProduct.get('quantity').touched || editProduct.get('quantity').dirty">
+                            <span *ngIf="editProduct.get('quantity').errors?.required">
+                                How many in stock?
+                            </span>
+                            <span *ngIf="editProduct.get('quantity').errors.min">
+                                Quantity must be equal to or greater than 0!
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="form-group"
+                    [ngClass]="{'alert alert-danger': editProduct.get('price').errors && editProduct.get('price').touched || editProduct.get('price').dirty}">
+                    <label class="col-sm-2 control-label" for="price">Price</label>
+                    <div class="col-sm-8">
+                        <input id="price" type="text" formControlName="price" class="form-control">
+                        <span class="help-block"
+                            *ngIf="editProduct.get('price').errors && editProduct.get('price').touched || editProduct.get('price').dirty">
+                            <span *ngIf="editProduct.get('price').errors?.required">
+                                How much is this Product?
+                            </span>
+                            <span *ngIf="editProduct.get('price').errors.min">
+                                Price must be equal to or greater than 0!
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <button class="btn btn-outline-info" type="submit" *ngIf="editProduct.valid">Submit</button>
+            <button class="btn btn-outline-info" [routerLink]="['/products']">Back</button>
+
+        </div>
+    </form>
+
+</body>
+
+</html>
