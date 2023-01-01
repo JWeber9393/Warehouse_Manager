@@ -15,6 +15,6 @@
     "nodemon": "^1.19.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.19"
+    "@angular-devkit/build-angular": "^15.0.4"
   }
 }
